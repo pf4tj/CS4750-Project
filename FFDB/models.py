@@ -44,31 +44,7 @@ NFL_TEAMS= (
     # Washington RedskinsWashington Redskins
 )
 
-class Player(models.Model):
-    player_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100, default = "")
-    position = models.CharField(max_length=2,choices=POSITION_CHOICES,default='NA')
-    starter = models.BooleanField()
-    current_points = models.IntegerField(default = 0)
-    NFL_team = models.CharField(choices=NFL_TEAMS,default=None)
-    league_team = models.ForeignKey(Team, on_delete = models.SET_DEFAULT, default=None)
-
-    def __str__(self):
-        return self.name
-
-class Team(models.Model):
-    team_id = models.AutoField(primary_key=True)
-    owner = models.CharField(max_length=100, unique=True)
-    name = models.CharField(max_length=100, default = "No Team Name", unique=True)
-    wins = models.IntegerField(default = 0)
-    loses = models.IntegerField(default = 0)
-    ties = models.IntegerField(default = 0)
-    current_points = models.IntegerField(default = 0))
-
-    def __str__(self):
-        return self.name + " " + self.owner
-
-class League(AbstractUser):
+class League(models.Model):
     league_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, default = "No League Name", unique=True)
     current_week = models.IntegerField(default = 0)
@@ -81,15 +57,41 @@ class Division(models.Model):
     name = models.CharField(max_length=100, default = "No Division Name", unique=True)
     league = models.ForeignKey(League, on_delete = models.CASCADE)
 
+class Team(models.Model):
+    team_id = models.AutoField(primary_key=True)
+    owner = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, default = "No Team Name", unique=True)
+    wins = models.IntegerField(default = 0)
+    loses = models.IntegerField(default = 0)
+    ties = models.IntegerField(default = 0)
+    current_points = models.IntegerField(default = 0)
+    division = models.ForeignKey(Division, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return self.name + " " + self.owner
+
+class Player(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, default = "")
+    position = models.CharField(max_length=2,choices=POSITION_CHOICES,default='NA')
+    starter = models.BooleanField()
+    current_points = models.IntegerField(default = 0)
+    NFL_team = models.CharField(choices=NFL_TEAMS,default=None, max_length=100)
+    league_team = models.ForeignKey(Team, on_delete = models.SET_DEFAULT, default=None)
+
+    def __str__(self):
+        return self.name
+
+
 class Week(models.Model):
     week_number = models.IntegerField(primary_key=True)
     league = models.ForeignKey(League, on_delete = models.CASCADE)
 
 class Matchup(models.Model):
     matchup_id = models.AutoField(primary_key=True)
-    home_team = models.ForeignKey(Team, on_delete=models.CASCADE, default=None)
+    home_team = models.ForeignKey(Team, on_delete=models.CASCADE, default=None, related_name='home_team')
     home_team_points = models.IntegerField(default = 0)
-    away_team = models.ForeignKey(Team, on_delete=models.CASCADE, default=None)
+    away_team = models.ForeignKey(Team, on_delete=models.CASCADE, default=None, related_name='away_team')
     away_team_points = models.IntegerField(default = 0)
     week = models.ForeignKey(Week, on_delete=models.CASCADE)
 
