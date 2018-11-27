@@ -74,11 +74,15 @@ WSGI_APPLICATION = 'DB_Access.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd16og879vkngbj',
+            'USER': 'wkwzplprcpgmml',
+            'PASSWORD': '18c147f5bd6be4aa905ebaa44fb63b04f490e3a64307d7ba3fe84aa54a723c7f',
+            'HOST': 'ec2-54-227-249-201.compute-1.amazonaws.com',
+            'PORT': '5432',
+        }
     }
-}
 
 
 # Password validation
@@ -105,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -118,3 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
