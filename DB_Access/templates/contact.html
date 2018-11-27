@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block pagecontent %}
+	<div class="jumbotron page-title">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1>Contact Us</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+<br>
+	<div class="container">
+		<form action="#" class="contact-form">
+			<p>
+			Have any questions or concerns? Feel free to fill out the form below and give us some feedback!
+			<div class="row form-group">
+				<div class="col-sm-4">
+    				<input type="text" class="fill-col" name="firstname" placeholder="First Name">
+				</div>
+
+				<div class="col-sm-4">
+    				<input type="text" class="fill-col" name="lastname" placeholder="Last Name">
+				</div>
+
+				<div class="col-sm-4">
+					<input type="email" class="fill-col" name="email" placeholder="Email Address">
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-sm-12">
+					<textarea class="fill-col" name="content" placeholder="Let us know what you think!" rows=10></textarea>
+				</div>
+			</div>
+			<div class="row form-group">
+				<center>
+					<input type="submit" class="btn btn-primary" value="Submit">
+				</center>
+			</div>
+		<form>
+	</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Home{% endblock %}
+{% block pagecontent %}
+
+<div class="jumbotron">
+	<div class="container">
+		<h1>Find A Court:</h1>
+
+		<div>
+			Most people wait until the last minute to find out if a court is taken. Don't wait until the last minute.
+		</div>
+
+		<form action="/scheduler/" method="post" id="availability_form">
+			{% csrf_token %}
+			<div class="form-row">
+
+				<div class="form-group col-md-6" id="facility_selection">
+					<label for="facility">Facility</label>
+					<select class="form-control" id="facility" name="facility">
+						<option disabled="disabled" selected="selected">Select an option</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-6" id="court_selection"
+					<label for="court">Court</label>
+					<select class="form-control" id="court" name="court">
+						<option disabled="disabled" selected="selected" class = "form-control">Select a facility first</option>
+					</select>
+				</div>
+
+			</div>
+
+		</form>
+
+		<a class="signup-btn submit" href="#">CHECK AVAILABILITY</a>
+
+	</div>
+</div>
+{% endblock %}

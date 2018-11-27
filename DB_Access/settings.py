@@ -55,7 +55,7 @@ ROOT_URLCONF = 'DB_Access.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["DB_Access/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
