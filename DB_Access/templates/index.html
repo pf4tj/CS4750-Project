@@ -6,35 +6,18 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h1>Find A Court:</h1>
+		<h1>Choose the kind of information you are looking for:</h1>
 
 		<div>
-			Most people wait until the last minute to find out if a court is taken. Don't wait until the last minute.
+			Simply click on the link below to enter wanted information. </br>
+			</br>
+			<a href="QT1">Query type 1</a> </br>
+			</br>
+			<a href="QT2">Query type 2</a> </br>
+			</br>
+			<a href="QT3">Query type 3</a> </br>
+			
 		</div>
-
-		<form action="/scheduler/" method="post" id="availability_form">
-			{% csrf_token %}
-			<div class="form-row">
-
-				<div class="form-group col-md-6" id="facility_selection">
-					<label for="facility">Facility</label>
-					<select class="form-control" id="facility" name="facility">
-						<option disabled="disabled" selected="selected">Select an option</option>
-					</select>
-				</div>
-
-				<div class="form-group col-md-6" id="court_selection"
-					<label for="court">Court</label>
-					<select class="form-control" id="court" name="court">
-						<option disabled="disabled" selected="selected" class = "form-control">Select a facility first</option>
-					</select>
-				</div>
-
-			</div>
-
-		</form>
-
-		<a class="signup-btn submit" href="#">CHECK AVAILABILITY</a>
 
 	</div>
 </div>

@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.HomePageView, name='home'),
-    url(r'^about/$', views.AboutPageView.as_view(), name='about'),
-    url(r'^contact/$', views.ContactPageView.as_view(), name='contact'),
-    url(r'^scheduler/$', views.SchedulerPageView.as_view(), name='scheduler'),
+    url(r'^QT1/$', views.QT1.as_view(), name='QueryType1'),
+    url(r'^QT2/$', views.QT2.as_view(), name='QueryType2'),
+    url(r'^QT3/$', views.QT3.as_view(), name='QueryType3'),
 ]

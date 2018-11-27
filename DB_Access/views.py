@@ -15,12 +15,12 @@ def HomePageView(request):
     return render(request, 'index.html')
 
 
-class AboutPageView(TemplateView):
-    template_name = "about.html"
+class QT1(TemplateView):
+    template_name = "QT1.html"
 
 
-class ContactPageView(TemplateView):
-    template_name = "contact.html"
+class QT2(TemplateView):
+    template_name = "QT2.html"
 
-class SchedulerPageView(TemplateView):
-    template_name = "scheduler.html"
+class QT3(TemplateView):
+    template_name = "QT3.html"
