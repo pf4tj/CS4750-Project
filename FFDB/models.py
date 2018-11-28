@@ -44,6 +44,20 @@ NFL_TEAMS= (
 	('Washington Redskins','Washington Redskins'),
 )
 
+class Our_User(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    owns_team = models.BooleanField()
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Our_User.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.our_user.save()
+
 class League(models.Model):
     league_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, default = "No League Name", unique=True)

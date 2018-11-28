@@ -34,11 +34,11 @@ def SearchPlayersFromTeam(request):
         form = SearchPlayersFromTeamForm()
     return render(request, 'QT2.html', {'form': form})
 
-class QT2(TemplateView):
-    template_name = "QT2.html"
-
-class QT3(TemplateView):
-    template_name = "QT3.html"
+def AddOrRemovePlayerFromTeam(request):
+    return render(request, 'QT3.html')
 
 class QT4(TemplateView):
     template_name = "QT4.html"
+
+def PlayersWithoutTeam(request):
+    return render(request, 'PlayersWithoutTeam.html')
