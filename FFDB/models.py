@@ -91,7 +91,7 @@ class Week(models.Model):
     league = models.ForeignKey(League, on_delete = models.CASCADE)
     
     def __str__(self):
-        return self.week_number
+        return str(self.week_number)
 
 class Matchup(models.Model):
     matchup_id = models.AutoField(primary_key=True)
@@ -103,7 +103,7 @@ class Matchup(models.Model):
     concluded = models.BooleanField()
 
     def __str__(self):
-        return self.home_team.name + " vs. " + self.away_team.name + " Week(" + self.week.week_number + ")"
+        return self.home_team.name + " vs. " + self.away_team.name + " Week(" + str(self.week.week_number) + ")"
 
 class Playerprojection(models.Model):
     player = models.OneToOneField(Player, on_delete=models.CASCADE, primary_key=True)
