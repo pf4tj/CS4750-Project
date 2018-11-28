@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block pagecontent %}
+	<div class="jumbotron page-title">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1>Sign Up</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="container signup">
+		<form method="post" id="form_signup">
+			{% csrf_token %}
+			{% comment %} {% for field in form %} {% endcomment %}
+				<div class="row form-group">
+					<div class="col-sm-4">
+						<input style="text-transform: none" type="username" class="fill-col" name="username" placeholder="Username">
+					</div>
+
+					<div class="col-sm-4">
+						<input style="text-transform: none" type="email" class="fill-col" name="email" placeholder="Email Address">
+					</div>
+
+					<div class="col-sm-4">
+						<input style="text-transform: none" type="password" class="fill-col" name="password" placeholder="Password">
+					</div>
+				</div>
+			<button type="submit">Sign Up</button>
+		<div class="row form-group">
+			<center>
+				Already have an account? Login <a href="{% url 'signin' %}">here</a>.
+			</center>
+		</div>
+	</div>
+{% endblock %}

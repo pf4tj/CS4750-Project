@@ -11,4 +11,7 @@ urlpatterns = [
     url(r'^QT3/', views.AddOrRemovePlayerFromTeam, name='AddOrRemovePlayerFromTeam'),
     url(r'^QT4/$', views.QT4.as_view(), name='QueryType4'),
     url(r'^PlayersWithoutTeam/', views.PlayersWithoutTeam, name='PlayersWithoutTeam'),
+    url(r'^signin/$', views.signin, name='signin'),
+    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^logout/$', views.logout_user, name='logout'),
 ]
