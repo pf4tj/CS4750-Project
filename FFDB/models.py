@@ -89,6 +89,9 @@ class Player(models.Model):
 class Week(models.Model):
     week_number = models.IntegerField(primary_key=True)
     league = models.ForeignKey(League, on_delete = models.CASCADE)
+    
+    def __str__(self):
+        return self.week_number
 
 class Matchup(models.Model):
     matchup_id = models.AutoField(primary_key=True)
