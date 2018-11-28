@@ -51,6 +51,10 @@ class PlayerprojectionAdmin(admin.ModelAdmin):
 @admin.register(Tradingblock)
 class Tradingblock(admin.ModelAdmin):
     list_display = ['team', 'team_needs', 'team_availables', 'interested_in']
+    
+@admin.register(Week)
+class WeekAdmin(admin.ModelAdmin):
+    list_display = ['week_number', 'league']
 
 
 # Register your models here.
