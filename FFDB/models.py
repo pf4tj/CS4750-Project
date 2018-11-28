@@ -57,6 +57,9 @@ class Division(models.Model):
     name = models.CharField(max_length=100, default = "No Division Name", unique=True)
     league = models.ForeignKey(League, on_delete = models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 class Team(models.Model):
     team_id = models.AutoField(primary_key=True)
     owner = models.CharField(max_length=100, unique=True)

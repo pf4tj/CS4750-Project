@@ -11,12 +11,15 @@ from FFDB.models import Tradingblock
 
 class DivisionInLine(admin.TabularInline):
     model = Division
+    extra = 0
 
 class TeamInLine(admin.TabularInline):
     model = Team
+    extra = 0
     
 class PlayerInLine(admin.TabularInline):
     model = Player
+    extra = 0
 
 @admin.register(League)
 class LeagueAdmin(admin.ModelAdmin):
