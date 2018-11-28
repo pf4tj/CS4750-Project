@@ -31,7 +31,7 @@ class DivisionAdmin(admin.ModelAdmin):
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
     list_display = ['name', 'owner', 'division']
-    inlines = [PlayerInLine, ]
+    #inlines = [PlayerInLine, ]
     
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):

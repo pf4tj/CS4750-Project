@@ -18,7 +18,7 @@ NFL_TEAMS= (
     ('Chicago Bears','Chicago Bears'),
     ('Cincinnati Bengals','Cincinnati Bengals'),
     ('Cleveland Browns','Cleveland Browns'),
-    # Dallas CowboysDallas Cowboys
+    ( 'Dallas Cowboys','Dallas Cowboys')
     # Denver BroncosDenver Broncos
     # Detroit LionsDetroit Lions
     # Green Bay PackersGreen Bay Packers
