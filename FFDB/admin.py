@@ -21,12 +21,12 @@ class PlayerInLine(admin.TabularInline):
 @admin.register(League)
 class LeagueAdmin(admin.ModelAdmin):
     list_display = ['league_id', 'name', 'current_week']
-    inlines = [DivisionInLine, ]
+    #inlines = [DivisionInLine, ]
     
 @admin.register(Division)
 class DivisionAdmin(admin.ModelAdmin):
     list_display = ['division_id', 'name', 'league']
-    inlines = [TeamInLine, ]
+    #inlines = [TeamInLine, ]
     
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
