@@ -115,7 +115,7 @@ class Playerprojection(models.Model):
     points = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.player.name + "'s Projected Points: " + self.points
+        return self.player.name + "'s Projected Points: " + str(self.points)
 
 class Tradingblock(models.Model):
     team = models.OneToOneField(Team, on_delete=models.CASCADE, primary_key=True)
