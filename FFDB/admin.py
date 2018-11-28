@@ -11,27 +11,30 @@ from FFDB.models import Tradingblock
 
 class DivisionInLine(admin.TabularInline):
     model = Division
+    extra = 0
 
 class TeamInLine(admin.TabularInline):
     model = Team
+    extra = 0
     
 class PlayerInLine(admin.TabularInline):
     model = Player
+    extra = 0
 
 @admin.register(League)
 class LeagueAdmin(admin.ModelAdmin):
     list_display = ['league_id', 'name', 'current_week']
-    #inlines = [DivisionInLine, ]
+    inlines = [DivisionInLine, ]
     
 @admin.register(Division)
 class DivisionAdmin(admin.ModelAdmin):
     list_display = ['division_id', 'name', 'league']
-    #inlines = [TeamInLine, ]
+    inlines = [TeamInLine, ]
     
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
     list_display = ['name', 'owner', 'division']
-    #inlines = [PlayerInLine, ]
+    inlines = [PlayerInLine, ]
     
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
