@@ -100,6 +100,7 @@ class Matchup(models.Model):
     away_team = models.ForeignKey(Team, on_delete=models.CASCADE, default=None, related_name='away_team')
     away_team_points = models.IntegerField(default = 0)
     week = models.ForeignKey(Week, on_delete=models.CASCADE)
+    concluded = models.BooleanField()
 
     def __str__(self):
         return self.home_team.name + " vs. " + self.away_team.name + " Week(" + week.week_number + ")"
