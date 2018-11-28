@@ -6,10 +6,15 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<h1>Query Type 1:</h1>
-					
+
 					<div>
-						Put type query 1 form here
-			
+
+						<form method="post" action="{% url 'SearchMatchupFromTeam' %}">
+						    {% csrf_token %}
+						    {{ form }}
+						    <input type="submit" value="Submit">
+						</form>
+
 					</div>
 				</div>
 			</div>
