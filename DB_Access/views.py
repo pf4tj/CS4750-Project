@@ -39,3 +39,6 @@ class QT2(TemplateView):
 
 class QT3(TemplateView):
     template_name = "QT3.html"
+
+class QT4(TemplateView):
+    template_name = "QT4.html"
