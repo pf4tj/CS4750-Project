@@ -53,7 +53,7 @@ NFL_TEAMS= (
 class Our_User(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    owns_team = models.BooleanField()
+    owns_team = models.BooleanField(default = False)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
