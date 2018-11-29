@@ -103,7 +103,7 @@ class Player(models.Model):
     starter = models.BooleanField()
     current_points = models.IntegerField(default = 0)
     NFL_team = models.CharField(choices=NFL_TEAMS,default=None, max_length=100)
-    league_team = models.ForeignKey(Team, on_delete = models.SET_DEFAULT, default=None)
+    league_team = models.ForeignKey(Team, on_delete = models.SET_DEFAULT, default=None, null=True, blank=True, )
 
     def __str__(self):
         return self.name
