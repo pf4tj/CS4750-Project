@@ -10,7 +10,7 @@
 					<div>
 						<ul>
 						{% for player in team %}
-						    <li>{{ player.name }}</li>
+						    <li>{{ player.name }} ({{player.position}})</li>
 						{% empty %}
 						    <li>No players yet.</li>
 						{% endfor %}
