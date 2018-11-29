@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 from FFDB.models import Matchup, Player, Team, Our_User
 from django.contrib.auth.models import User
-from DB_Access.forms import SearchMatchupFromTeamForm, SearchPlayersFromTeamForm, AddPlayerToTeamForm, RemovePlayerFromTeamForm
+from DB_Access.forms import SearchMatchupFromTeamForm, SearchPlayersFromTeamForm, AddPlayerToTeamForm, RemovePlayerFromTeamForm, StartPlayerOnTeamForm, BenchPlayerOnTeamForm
 from django.contrib.auth import login, authenticate, logout
 from django.middleware.csrf import get_token
 from django.contrib.auth.decorators import login_required
@@ -103,6 +103,38 @@ def RemovePlayerFromTeam(request):
     else:
         form = RemovePlayerFromTeamForm(user=request.user)
     return render(request, 'RemovePlayer.html', {'form': form})
+
+@login_required
+def StartPlayerOnTeam(request):
+    if request.method == 'POST':
+        form = StartPlayerOnTeamForm(request.POST, user=request.user, )
+        if form.is_valid():
+            player = form.cleaned_data.get('player_name')
+            player_id = player.player_id
+
+            sql = 'UPDATE public."FFDB_player" SET starter = 1 WHERE player_id = ' + str(player_id)
+            result = execute_sql_update(sql)
+
+            return redirect('AddOrRemovePlayerFromTeam')
+    else:
+        form = StartPlayerOnTeamForm(user=request.user)
+    return render(request, 'StartPlayerOnTeam.html', {'form': form})
+
+@login_required
+def BenchPlayerOnTeam(request):
+    if request.method == 'POST':
+        form = BenchPlayerOnTeamForm(request.POST, user=request.user, )
+        if form.is_valid():
+            player = form.cleaned_data.get('player_name')
+            player_id = player.player_id
+
+            sql = 'UPDATE public."FFDB_player" SET starter = 0 WHERE player_id = ' + str(player_id)
+            result = execute_sql_update(sql)
+
+            return redirect('AddOrRemovePlayerFromTeam')
+    else:
+        form = BenchPlayerOnTeamForm(user=request.user)
+    return render(request, 'BenchPlayerOnTeam.html', {'form': form})
 
 @login_required
 def AddPlayerToTeam(request):

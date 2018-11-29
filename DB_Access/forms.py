@@ -18,6 +18,24 @@ class RemovePlayerFromTeamForm(forms.Form):
         if user:
             self.fields['player_name'].queryset = Player.objects.filter(league_team=Team.objects.get(owner=Our_User.objects.get(user=user)))
 
+class StartPlayerOnTeamForm(forms.Form):
+    player_name = forms.ModelChoiceField(queryset=Player.objects.all())
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(StartPlayerOnTeamForm, self).__init__(*args, **kwargs)
+        if user:
+            self.fields['player_name'].queryset = Player.objects.filter(league_team=Team.objects.get(owner=Our_User.objects.get(user=user)))
+
+class BenchPlayerOnTeamForm(forms.Form):
+    player_name = forms.ModelChoiceField(queryset=Player.objects.all())
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(BenchPlayerOnTeamForm, self).__init__(*args, **kwargs)
+        if user:
+            self.fields['player_name'].queryset = Player.objects.filter(league_team=Team.objects.get(owner=Our_User.objects.get(user=user)))
+
 class AddPlayerToTeamForm(forms.Form):
     player_name = forms.ModelChoiceField(queryset=Player.objects.filter(league_team=None))
 
