@@ -55,6 +55,10 @@ class Tradingblock(admin.ModelAdmin):
 @admin.register(Week)
 class WeekAdmin(admin.ModelAdmin):
     list_display = ['week_number', 'league']
+    
+@admin.register(Our_User)
+class Our_UserAdmin(admin.ModelAdmin):
+    list_display = ['user', 'owns_team']
 
 
 # Register your models here.
