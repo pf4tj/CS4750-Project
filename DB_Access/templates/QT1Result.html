@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block pagecontent %}
+	<div class="jumbotron page-title">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1>Team Matchups:</h1>
+
+					<div>
+
+						<table rule-style=SOLID border=SOLID>
+						
+							<tr>
+								<th> Matchup Number</th>
+								<th> Home Team Id</th>
+								<th> Home Team Points</th>
+								<th> Away Team Id</th>
+								<th> Away Team Points</th>
+								<th> Week</th>
+								<th> Concluded</th>
+							</tr>
+							
+							{% for matchup in result %}
+								<tr>
+									<td>{{matchup.0}}</td>
+									<td>{{matchup.5}}</td>
+									<td>{{matchup.1}}</td>
+									<td>{{matchup.4}}</td>
+									<td>{{matchup.2}}</td>
+									<td>{{matchup.6}}</td>
+									<td>{{matchup.3}}</td>
+								</tr>
+							{% empty %}
+								<tr>
+									<td>No</td>
+									<td>Matchups</td>
+									<td>Found</td>
+									<td>For</td>
+									<td>The</td>
+									<td>Selected</td>
+									<td>Team</td>
+								</tr>
+							
+							{% endfor %}
+							
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<br>
+{% endblock %}
