@@ -63,6 +63,9 @@ class Our_User(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.our_user.save()
+        
+    def __str__(self):
+        return self.user.username
 
 class League(models.Model):
     league_id = models.AutoField(primary_key=True)
