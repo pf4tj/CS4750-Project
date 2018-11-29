@@ -8,6 +8,7 @@ from FFDB.models import Week
 from FFDB.models import Matchup
 from FFDB.models import Playerprojection
 from FFDB.models import Tradingblock
+from FFDB.models import Our_User
 
 class DivisionInLine(admin.TabularInline):
     model = Division
