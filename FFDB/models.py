@@ -82,7 +82,7 @@ class Division(models.Model):
 
 class Team(models.Model):
     team_id = models.AutoField(primary_key=True)
-    owner = models.CharField(max_length=100, unique=True)
+    owner = models.ForeignKey(Our_User, default=None, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default = "No Team Name", unique=True)
     wins = models.IntegerField(default = 0)
     loses = models.IntegerField(default = 0)
