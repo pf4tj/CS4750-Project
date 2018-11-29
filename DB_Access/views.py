@@ -112,7 +112,7 @@ def StartPlayerOnTeam(request):
             player = form.cleaned_data.get('player_name')
             player_id = player.player_id
 
-            sql = 'UPDATE public."FFDB_player" SET starter = 1 WHERE player_id = ' + str(player_id)
+            sql = 'UPDATE public."FFDB_player" SET starter = True WHERE player_id = ' + str(player_id)
             result = execute_sql_update(sql)
 
             return redirect('AddOrRemovePlayerFromTeam')
@@ -128,7 +128,7 @@ def BenchPlayerOnTeam(request):
             player = form.cleaned_data.get('player_name')
             player_id = player.player_id
 
-            sql = 'UPDATE public."FFDB_player" SET starter = 0 WHERE player_id = ' + str(player_id)
+            sql = 'UPDATE public."FFDB_player" SET starter = False WHERE player_id = ' + str(player_id)
             result = execute_sql_update(sql)
 
             return redirect('AddOrRemovePlayerFromTeam')
