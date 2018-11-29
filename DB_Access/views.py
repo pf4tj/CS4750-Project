@@ -26,16 +26,34 @@ def HomePageView(request):
     return render(request, 'index.html')
 
 @login_required
+def ListAllTeams(request):
+    sql = 'SELECT * FROM public."FFDB_team"'
+    result = execute_sql(sql)
+    return render(request, 'QT5.html', {'result': result})
+
+@login_required
+def ListAllMatchups(request):
+    sql = 'SELECT * FROM public."FFDB_matchup"'
+    result = execute_sql(sql)
+    return render(request, 'ListAllMatchups.html', {'result': result})
+
+@login_required
+def ListAllPlayers(request):
+    sql = 'SELECT * FROM public."FFDB_player"'
+    result = execute_sql(sql)
+    return render(request, 'ListAllPlayers.html', {'result': result})
+
+@login_required
 def SearchMatchupFromTeam(request):
     if request.method == 'POST':
         form = SearchMatchupFromTeamForm(request.POST)
         if form.is_valid():
             team = form.cleaned_data.get('team_name')
             team_id = team.team_id
-            
+
             sql = 'SELECT * FROM public."FFDB_matchup" WHERE away_team_id = ' + str(team_id) + ' OR home_team_id = ' + str(team_id)
             result = execute_sql(sql)
-            
+
             return render(request, 'QT1Result.html', {'result': result})
     else:
         form = SearchMatchupFromTeamForm()
@@ -48,10 +66,10 @@ def SearchPlayersFromTeam(request):
         if form.is_valid():
             team = form.cleaned_data.get('team_name')
             team_id = team.team_id
-            
+
             sql = 'SELECT * FROM public."FFDB_player" WHERE league_team_id = ' + str(team_id)
             result = execute_sql(sql)
-            
+
             return render(request, 'PlayersOnTeam.html', {'result': result})
     else:
         form = SearchPlayersFromTeamForm()
@@ -60,7 +78,9 @@ def SearchPlayersFromTeam(request):
 @login_required
 def AddOrRemovePlayerFromTeam(request):
     if request.user.our_user.owns_team:
-        return render(request, 'QT3.html', {'team':Player.objects.filter(league_team=Team.objects.get(owner=Our_User.objects.get(user=request.user)))})
+        sql = 'SELECT * FROM public."FFDB_player" WHERE league_team_id = ' + str(Team.objects.get(owner=Our_User.objects.get(user=request.user)).team_id)
+        result = execute_sql(sql)
+        return render(request, 'QT3.html', {'result': result})
     else:
         return redirect('NoTeam')
 
@@ -75,10 +95,10 @@ def RemovePlayerFromTeam(request):
         if form.is_valid():
             player = form.cleaned_data.get('player_name')
             player_id = player.player_id
-            
+
             sql = 'UPDATE public."FFDB_player" SET league_team_id = NULL WHERE player_id = ' + str(player_id)
             result = execute_sql_update(sql)
-            
+
             return redirect('AddOrRemovePlayerFromTeam')
     else:
         form = RemovePlayerFromTeamForm(user=request.user)
@@ -91,10 +111,10 @@ def AddPlayerToTeam(request):
         if form.is_valid():
             player = form.cleaned_data.get('player_name')
             player_id = player.player_id
-            
+
             sql = 'UPDATE public."FFDB_player" SET league_team_id = ' + str(Team.objects.get(owner=Our_User.objects.get(user=request.user)).team_id) + 'WHERE player_id = ' + str(player_id)
             result = execute_sql_update(sql)
-            
+
             return redirect('AddOrRemovePlayerFromTeam')
     else:
         form = AddPlayerToTeamForm()
@@ -104,7 +124,7 @@ def AddPlayerToTeam(request):
 def QT4(request):
     sql = 'SELECT * FROM public."FFDB_team" WHERE team_id IN (SELECT home_team_id FROM public."FFDB_matchup" WHERE home_team_points > away_team_points)'
     result = execute_sql(sql)
-            
+
     return render(request, 'QT4.html', {'result': result})
 
 @login_required

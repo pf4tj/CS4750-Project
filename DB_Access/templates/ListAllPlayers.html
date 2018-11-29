@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<h1>Your Team:</h1>
+					<h1>All Players:</h1>
 
 					<div>
 						<table rule-style=SOLID border=SOLID>
@@ -17,6 +17,7 @@
 								<th> Starter</th>
 								<th> Current Points</th>
 								<th> NFL Team</th>
+								<th> League Team</th>
 							</tr>
 
 							{% for player in result %}
@@ -27,25 +28,22 @@
 									<td>{{player.3}}</td>
 									<td>{{player.4}}</td>
 									<td>{{player.5}}</td>
+									<td>{{player.6}}</td>
 								</tr>
 							{% empty %}
 								<tr>
+									<td>No</td>
 									<td>Players</td>
-									<td>For</td>
-									<td>This</td>
-									<td>Team</td>
-									<td>Don't</td>
-									<td>Exist</td>
+									<td>Are</td>
+									<td>In</td>
+									<td>Our</td>
+									<td>Entire</td>
+									<td>Database</td>
 								</tr>
 
 							{% endfor %}
 
 						</table>
-
-						</br>
-
-						<a href ={% url 'AddPlayerToTeam' %} class='btn btn-primary' > Add Player </a>
-						<a href ={% url 'RemovePlayerFromTeam' %} class='btn btn-primary' > Remove Player </a>
 
 					</div>
 				</div>

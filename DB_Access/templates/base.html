@@ -28,9 +28,10 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarText">
                 	        <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
-                    	        <li class="nav-item"><a class="nav-link" href="{% url 'SearchMatchupFromTeam' %}">Team Matchups</a></li>
-                    	        <li class="nav-item"><a class="nav-link" href="{% url 'SearchPlayersFromTeam' %}">Player Lists</a></li>
-                    	        <li class="nav-item"><a class="nav-link" href="{% url 'AddOrRemovePlayerFromTeam' %}">Add or Remove Player</a></li>
+                              <li class="nav-item"><a class="nav-link" href="{% url 'ListAllTeams' %}">Teams</a></li>
+                    	        <li class="nav-item"><a class="nav-link" href="{% url 'SearchMatchupFromTeam' %}">Matchups</a></li>
+                    	        <li class="nav-item"><a class="nav-link" href="{% url 'SearchPlayersFromTeam' %}">Players</a></li>
+                    	        <li class="nav-item"><a class="nav-link" href="{% url 'AddOrRemovePlayerFromTeam' %}">Your Team</a></li>
                     	        <li class="nav-item"><a class="nav-link" href="{% url 'QueryType4' %}">Home Game Winners</a></li>
 						        {% if not user.is_authenticated %}
                                     <li class=" nav-item"><a class="nav-link" href="{% url 'signup' %}">Sign Up</a></li>

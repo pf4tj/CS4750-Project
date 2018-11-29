@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block pagecontent %}
+	<div class="jumbotron page-title">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1>Teams:</h1>
+
+					<div>
+						<table rule-style=SOLID border=SOLID>
+
+							<tr>
+								<th> Team ID</th>
+								<th> Team Name</th>
+								<th> Wins</th>
+								<th> Losses</th>
+								<th> Ties</th>
+								<th> Current Points</th>
+							</tr>
+
+							{% for team in result %}
+								<tr>
+									<td>{{team.0}}</td>
+									<td>{{team.1}}</td>
+									<td>{{team.2}}</td>
+									<td>{{team.3}}</td>
+									<td>{{team.4}}</td>
+									<td>{{team.5}}</td>
+								</tr>
+							{% empty %}
+								<tr>
+									<td>No</td>
+									<td>Teams</td>
+									<td>Are</td>
+									<td>In</td>
+									<td>Our</td>
+									<td>Database</td>
+									<td>Yet</td>
+								</tr>
+
+							{% endfor %}
+
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<br>
+{% endblock %}
