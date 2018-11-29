@@ -31,7 +31,7 @@ NFL_TEAMS= (
 	('Houston Texans','Houston Texans'),
 	('Indianapolis Colts','Indianapolis Colts'),
 	('Jacksonville Jaguars','Jacksonville Jaguars'),
-	('Kansas City','Kansas City'),
+	('Kansas City Chiefs','Kansas City Chiefs'),
 	('Miami Dolphins','Miami Dolphins'),
 	('Minnesota Vikings','Minnesota Vikings'),
 	('New England Patriots','New England Patriots'),
@@ -41,8 +41,8 @@ NFL_TEAMS= (
 	('Oakland Raiders','Oakland Raiders'),
 	('Philadelphia Eagles','Philadelphia Eagles'),
 	('Pittsburgh Steelers','Pittsburgh Steelers'),
-	('St. Louis Rams','St. Louis Rams'),
-	('San Diego Chargers','San Diego Chargers'),
+	('Los Angeles Rams', 'Los Angeles Rams'),
+	('Los Angeles Chargers','Los Angeles Chargers'),
 	('San Francisco 49ers','San Francisco 49ers'),
 	('Seattle Seahawks','Seattle Seahawks'),
 	('Tampa Bay Buccaneers','Tampa Bay Buccaneers'),
@@ -105,7 +105,7 @@ class Player(models.Model):
     league_team = models.ForeignKey(Team, on_delete = models.SET_DEFAULT, default=None, null=True, blank=True, )
 
     def __str__(self):
-        return self.name
+        return self.name + '(' + self.position + ')'
 
 
 class Week(models.Model):
