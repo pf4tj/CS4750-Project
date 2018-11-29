@@ -94,7 +94,7 @@ class Team(models.Model):
     division = models.ForeignKey(Division, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return self.name + " " + self.owner.user.username
+        return self.name
 
 class Player(models.Model):
     player_id = models.AutoField(primary_key=True)
