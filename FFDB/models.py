@@ -51,18 +51,20 @@ NFL_TEAMS= (
 )
 
 class Our_User(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	owns_team = models.BooleanField(default = False)
 
-    owns_team = models.BooleanField(default = False)
+	@receiver(post_save, sender=User)
+	def create_user_profile(sender, instance, created, **kwargs):
+		if created:
+			Our_User.objects.create(user=instance)
 
-    @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            Our_User.objects.create(user=instance)
+	@receiver(post_save, sender=User)
+	def save_user_profile(sender, instance, **kwargs):
+		instance.our_user.save()
 
-    @receiver(post_save, sender=User)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.our_user.save()
+	def __str__(self):
+		return self.user.username
 
 class League(models.Model):
     league_id = models.AutoField(primary_key=True)
@@ -91,7 +93,7 @@ class Team(models.Model):
     division = models.ForeignKey(Division, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return self.name + " " + self.owner
+        return self.name
 
 class Player(models.Model):
     player_id = models.AutoField(primary_key=True)
@@ -109,7 +111,7 @@ class Player(models.Model):
 class Week(models.Model):
     week_number = models.IntegerField(primary_key=True)
     league = models.ForeignKey(League, on_delete = models.CASCADE)
-    
+
     def __str__(self):
         return str(self.week_number)
 

@@ -5,11 +5,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<h1>Query Type 3:</h1>
-					
+					<h1>Add or Remove Players From Team:</h1>
+
 					<div>
-						Put type query 3 form here
-			
+						<ul>
+						{% for player in team %}
+						    <li>{{ player.name }}</li>
+						{% empty %}
+						    <li>No players yet.</li>
+						{% endfor %}
+						</ul>
+
+						<a href ={% url 'AddPlayerToTeam' %} class='btn btn-primary' > Add Player </a>
+						<a href ={% url 'RemovePlayerFromTeam' %} class='btn btn-primary' > Remove Player </a>
+
 					</div>
 				</div>
 			</div>

@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+LOGIN_URL = '/signin/'
+
 ROOT_URLCONF = 'DB_Access.urls'
 
 TEMPLATES = [
